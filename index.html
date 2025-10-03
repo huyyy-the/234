@@ -112,7 +112,7 @@
     <p>Gửi đến <strong id="receiver-name">Bạn yêu quý</strong></p>
   </div>
 
-  <!-- 🎶 Nhạc nền tự động -->
+  <!-- 🎶 Nhạc nền -->
   <audio id="bg-music" autoplay loop hidden>
     <source src="7077876453022.mp3" type="audio/mpeg">
     Trình duyệt của bạn không hỗ trợ phát nhạc.
@@ -209,6 +209,12 @@
     // 💥 pháo hoa theo click
     document.addEventListener("click", function(e) {
       createFirework(e.clientX, e.clientY);
+
+      // 🔊 bật nhạc nếu đang bị chặn
+      let music = document.getElementById("bg-music");
+      if (music.paused) {
+        music.play().catch(()=>{}); // tránh lỗi nếu bị chặn
+      }
     });
   </script>
 </body>
